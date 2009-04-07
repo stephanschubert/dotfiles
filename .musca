@@ -1,0 +1,50 @@
+# Setup workspaces
+
+add 1
+add 2
+add 3
+add 4
+
+# Switch to workspaces
+
+bind on Mod4+1 use 1
+bind on Mod4+2 use 2
+bind on Mod4+3 use 3
+bind on Mod4+4 use 4
+
+# Move to workspaces
+
+bind on Mod4+Shift+1 move 1
+bind on Mod4+Shift+2 move 2
+bind on Mod4+Shift+3 move 3
+bind on Mod4+Shift+4 move 4
+
+# Navigation
+
+bind on Mod4+j cycle next
+bind on Mod4+k cycle prev
+bind on Mod4+Shift+c kill
+
+bind on Mod4+Home use (next)
+bind on Mod4+End use (prev)
+
+# Don't use default workspace
+
+drop default
+use 1
+
+# Enable auto-focus using mouse
+set focus_follow_mouse 1
+
+# New windows should try to find an empty frame to use
+set window_open_frame empty
+
+# Resize frames in steps of 10px
+set frame_resize 10
+
+# Colors
+
+set border_focus GreenYellow
+set border_unfocus gray20
+set border_catchall_unfocus gray20
+set border_dedicate_unfocus gray20
