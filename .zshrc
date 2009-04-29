@@ -12,12 +12,6 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-# get the name of the branch we are on
-git_prompt_info() {
-  ref=$(git-symbolic-ref HEAD 2> /dev/null) || return
-  echo "(${ref#refs/heads/})"
-}
-
 parse_git_branch() {
   (git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/') || return
 }
