@@ -1,0 +1,9 @@
+parse_git_branch() {
+  (git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/') || return
+}
+
+autoload -U colors
+colors
+
+setopt prompt_subst
+PROMPT='%n@%m %{$fg[red]%}%100c %{$fg[blue]%}$(parse_git_branch)%{$reset_color%}> '

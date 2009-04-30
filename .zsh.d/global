@@ -1,0 +1,7 @@
+setopt autocd   # No need for explicit "cd"
+setopt beep     # Beep on errors
+setopt nomatch
+setopt notify
+
+# Use emacs mode
+bindkey -e
