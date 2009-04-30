@@ -2,4 +2,16 @@ My collection of dotfiles
 
 ( Except the emacs-related ones - See http://github.com/jazen/emacs )
 
+== 1. (Un-)Installation ==
+
+ruby install.rb
+
+or
+
+ruby uninstall.rb
+
+Essentially creates/removes some symlinks from the
+dotfiles/-directories in the git repository.
+
+
 More to come.
