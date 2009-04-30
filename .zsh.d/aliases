@@ -1,6 +1,12 @@
+# emacs
+alias e='emacs'
+
 # git
 alias gs='git status'
 alias ga='git add'
+alias gc='git commit -m'
+alias gca='git commit -a -m'
+alias gp='git push'
 
 # ls
 alias l='ls'
