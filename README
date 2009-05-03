@@ -13,5 +13,9 @@ ruby uninstall.rb
 Essentially creates/removes some symlinks from the
 dotfiles/-directories in the git repository.
 
+== 2. Scripts ==
+
+- zdit - a simple non-screen-clearing editor (by Christian Neukirchen)
+  (Create a symlink to wherever your $PATH links to)
 
 More to come.

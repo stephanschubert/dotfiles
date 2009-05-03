@@ -1,5 +1,6 @@
 # emacs
 alias e='emacs'
+alias se='sudo emacs'
 
 # git
 alias gs='git status'
