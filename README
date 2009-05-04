@@ -16,6 +16,8 @@ dotfiles/-directories in the git repository.
 == 2. Scripts ==
 
 - zdit - a simple non-screen-clearing editor (by Christian Neukirchen)
-  (Create a symlink to wherever your $PATH links to)
+  Create a symlink to wherever your PATH links to (or update PATH)
+
+  Example: sudo ln -s ~/dotfiles/scripts/zdit /usr/bin/zdit
 
 More to come.
