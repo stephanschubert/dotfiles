@@ -13,3 +13,6 @@ Link[ Cwd['.musca'], Home['.musca'] ]
 
 Link[ Cwd['.zshrc'], Home['.zshrc'] ]
 Link[ Cwd['.zsh.d'], Home['.zsh.d'] ]
+
+Link[ Cwd['.xinitrc'], Home['.xinitrc'] ]
+Link[ Cwd['.Xmodmap'], Home['.Xmodmap'] ]
