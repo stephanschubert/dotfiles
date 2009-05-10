@@ -1,7 +1,8 @@
-HISTFILE=~/.histfile
+HISTFILE=~/.zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
 
-setopt appendhistory
-setopt hist_ignore_all_dups # Ignore all duplicates
-setopt hist_ignore_space    # Ignore all commands starting with a space
+setopt APPEND_HISTORY
+setopt HIST_IGNORE_DUPS  # Ignore all duplicates
+setopt HISt_IGNORE_SPACE # Ignore all commands starting with a space
+setopt EXTENDED_HISTORY
