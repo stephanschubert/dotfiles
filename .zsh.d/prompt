@@ -1,0 +1,1 @@
+PROMPT='%n@%m %{$fg[blue]%}$(parse_git_branch) %{$fg[red]%}%(4~,.../,)%3~%{$reset_color%}%(!.#.$) '
