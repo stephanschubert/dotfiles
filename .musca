@@ -36,16 +36,15 @@ drop default
 use 1
 
 # Enable auto-focus using mouse
-
 set focus_follow_mouse 1
 
 # New windows should try to find an empty frame to use
-
 set window_open_frame empty
 
 # Resize frames in steps of 10px
-
 set frame_resize 10
+
+set border_with 0
 
 # Colors
 
