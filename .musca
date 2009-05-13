@@ -1,3 +1,5 @@
+hook on ^add pad 0 0 16 0
+
 # Setup workspaces
 
 add 1
@@ -51,3 +53,7 @@ set border_focus GreenYellow
 set border_unfocus gray20
 set border_catchall_unfocus gray20
 set border_dedicate_unfocus gray20
+
+# Scripts
+
+exec ~/scripts/musca-status.rb
