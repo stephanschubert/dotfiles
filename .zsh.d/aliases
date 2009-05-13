@@ -1,6 +1,6 @@
 # emacs
-alias e='emacs'
-alias se='sudo emacs'
+alias e='emacs-snapshot'
+alias se='sudo emacs-snapshot'
 
 # git
 alias gs='git status'
