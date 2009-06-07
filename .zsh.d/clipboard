@@ -5,7 +5,7 @@
 
 paste-from-clipboard() {
   CLIPOUT=`xclip -out`
-  BUFFER=$LBUFFER$CLIPOUT$RBUFFEr
+  BUFFER=$LBUFFER$CLIPOUT$RBUFFER
 }
 
 bindkey '^V' paste-from-clipboard
