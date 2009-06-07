@@ -1,0 +1,11 @@
+# Enables paste support using Ctrl-v 
+#
+# Requires the xclip utitility as 
+# interface to X11's clipboard.
+
+paste-from-clipboard() {
+  CLIPOUT=`xclip -out`
+  BUFFER=$LBUFFER$CLIPOUT$RBUFFEr
+}
+
+bindkey '^V' paste-from-clipboard
