@@ -14,3 +14,4 @@ zle -N paste-from-clipboard paste-from-clipboard
 # Make insert paste from clipboard by binding it to the widget.
 # If you hit ctrl-v and then the key, it shows you the extended code to use.
 bindkey '^V' paste-from-clipboard
+
