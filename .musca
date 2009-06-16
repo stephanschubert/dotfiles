@@ -55,4 +55,5 @@ set border_dedicate_unfocus gray20
 
 # Scripts
 
+exec vmware-user
 exec ~/scripts/dzen2.rb
