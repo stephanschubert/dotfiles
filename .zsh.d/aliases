@@ -15,3 +15,7 @@ alias gp='git push'
 alias l='ls'
 alias ll='ls -l'
 alias lla='ls -la'
+
+# misc
+alias g='grep'
+alias p='ps aux | grep'
