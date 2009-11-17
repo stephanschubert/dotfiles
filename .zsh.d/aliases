@@ -16,6 +16,13 @@ alias l='ls'
 alias ll='ls -l'
 alias lla='ls -la'
 
-# misc
+# ruby/rails
+alias rc='ruby script/console'
+alias rcp='ruby script/console production'
+alias rs='ruby script/server'
+alias td='tail -f log/development.log'
+alias tp='tail -f log/production.log'
+
+# other
 alias g='grep'
 alias p='ps aux | grep'
