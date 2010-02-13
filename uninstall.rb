@@ -14,4 +14,6 @@ Remove[ Home[".zshrc"] ]
 Remove[ Home[".zsh.d"] ]
 
 Remove[ Home[".xinitrc"] ]
+Remove[ Home[".xsession"] ]
 Remove[ Home[".Xmodmap"] ]
+Remove[ Home[".xmonad"] ]

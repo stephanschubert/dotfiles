@@ -17,3 +17,5 @@ Link[ Cwd['.zsh.d'], Home['.zsh.d'] ]
 Link[ Cwd['.xinitrc'], Home['.xinitrc'] ]
 Link[ Home['.xinitrc'], Home['.xsession'] ]
 Link[ Cwd['.Xmodmap'], Home['.Xmodmap'] ]
+
+Link[ Cwd['.xmonad'], Home['.xmonad'] ]
