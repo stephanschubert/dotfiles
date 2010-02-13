@@ -1,10 +1,6 @@
 #!/bin/bash
 
-# Load custom mappings
-xmodmap ~/.Xmodmap
+vmware-user &
+xsetroot -solid black
 
-# Load vmware-user
-exec vmware-user
-
-# invoke global X session script
-. /etc/X11/Xsession
+exec xmonad
