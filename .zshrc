@@ -1,3 +1,5 @@
+export PATH=$PATH:$HOME/bin
+
 if [[ -s /home/jazen/.rvm/scripts/rvm ]] && [[ $rvm_loaded_flag != 1 ]] ; then source /home/jazen/.rvm/scripts/rvm ; fi
 
 # Load every file from ~/.zsdh.d
