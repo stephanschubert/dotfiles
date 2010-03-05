@@ -12,9 +12,15 @@ alias gcam='git commit --amend -C HEAD'
 alias gp='git push'
 
 # ls
-alias l='ls'
-alias ll='ls -l'
-alias lla='ls -la'
+alias ls='ls -c --color=auto'
+alias la='ls -ac --color=auto'
+alias ll='ls -lah --color=auto'
+alias lsd='ls -d */'
+
+# ls + grep
+alias lsg='ls --color=auto | g'
+alias lag='ls -a --color=auto | g'
+alias llg='ls -lah --color=auto | g'
 
 # ruby/rails
 alias rc='ruby script/console'
@@ -23,6 +29,16 @@ alias rs='ruby script/server'
 alias td='tail -f log/development.log'
 alias tp='tail -f log/production.log'
 
-# other
-alias g='grep'
-alias p='ps aux | grep'
+# Colorize grep
+alias g='grep --color=always'
+alias gi='grep -i --color=always'
+
+# Confirm
+alias mv='mv -i'
+alias cp='cp -i'
+alias rm='rm -i'
+
+# Master chief
+alias psa='ps auxf'
+alias psg='ps aux | g'
+
