@@ -33,11 +33,6 @@ alias tp='tail -f log/production.log'
 alias g='grep --color=always'
 alias gi='grep -i --color=always'
 
-# Confirm
-alias mv='mv -i'
-alias cp='cp -i'
-alias rm='rm -i'
-
 # Master chief
 alias psa='ps auxf'
 alias psg='ps aux | g'
