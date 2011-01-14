@@ -10,6 +10,8 @@ alias gc='git commit -m'
 alias gca='git commit -a -m'
 alias gcam='git commit --amend -C HEAD'
 alias gp='git push'
+alias go='git checkout'
+alias gl='git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
 
 # ls
 alias ls='ls -c --color=auto'
@@ -36,4 +38,3 @@ alias gi='grep -i --color=always'
 # Master chief
 alias psa='ps auxf'
 alias psg='ps aux | g'
-
