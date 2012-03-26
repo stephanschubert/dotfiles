@@ -9,13 +9,6 @@ Cwd    = Joiner[ File.expand_path(File.dirname(__FILE__)) ]
 Home   = Joiner[ File.expand_path("~") ]
 
 Link[ Cwd['.irbrc'], Home['.irbrc'] ]
-Link[ Cwd['.musca'], Home['.musca'] ]
-
 Link[ Cwd['.zshrc'], Home['.zshrc'] ]
 Link[ Cwd['.zsh.d'], Home['.zsh.d'] ]
-
-Link[ Cwd['.xinitrc'], Home['.xinitrc'] ]
-Link[ Home['.xinitrc'], Home['.xsession'] ]
-Link[ Cwd['.Xmodmap'], Home['.Xmodmap'] ]
-
-Link[ Cwd['.xmonad'], Home['.xmonad'] ]
+Link[ Cwd['.tmux.conf'], Home['.tmux.conf'] ]
