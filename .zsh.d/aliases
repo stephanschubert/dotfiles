@@ -3,8 +3,8 @@ alias e='emacs-snapshot'
 alias se='sudo emacs-snapshot'
 
 # git
-alias gs='git status'
-alias gd='git diff'
+alias gst='git status'
+alias gdf='git diff'
 alias ga='git add'
 alias gai='git add --interactive'
 alias gc='git commit -m'
