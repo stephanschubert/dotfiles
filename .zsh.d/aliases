@@ -1,12 +1,13 @@
 # emacs
-alias e='emacs-snapshot'
-alias se='sudo emacs-snapshot'
+alias e='emacs'
+alias se='sudo emacs'
 
 # git
 alias gst='git status'
 alias gdf='git diff'
 alias ga='git add'
 alias gai='git add --interactive'
+alias gap='git add -p'
 alias gc='git commit -m'
 alias gca='git commit -a -m'
 alias gcam='git commit --amend -C HEAD'
@@ -18,15 +19,15 @@ alias gl='git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
 alias bx='bundle exec'
 
 # ls
-alias ls='ls -c --color=auto'
-alias la='ls -ac --color=auto'
-alias ll='ls -lah --color=auto'
-alias lsd='ls -d */'
+alias ls='ls -c -GpF'
+alias la='ls -ac -GpF'
+alias ll='ls -lah -GpF'
+alias lsd='ls -d -GpF */'
 
 # ls + grep
-alias lsg='ls --color=auto | g'
-alias lag='ls -a --color=auto | g'
-alias llg='ls -lah --color=auto | g'
+alias lsg='ls -GpF | g'
+alias lag='ls -a -GpF | g'
+alias llg='ls -lah -GpF | g'
 
 # ruby/rails
 alias rc='ruby script/console'
