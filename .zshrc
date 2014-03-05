@@ -47,7 +47,7 @@ plugins=(git ruby nvm)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/Users/sschubert/.rbenv/shims:/Users/sschubert/.rbenv/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
+export PATH=$HOME/.rbenv/shims:$HOME/.rbenv/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
 
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
