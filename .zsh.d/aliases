@@ -42,3 +42,7 @@ alias gi='grep -i --color=always'
 # Master chief
 alias psa='ps auxf'
 alias psg='ps aux | g'
+
+# Move multiple files
+autoload -U zmv
+alias mmv='noglob zmv -W'
