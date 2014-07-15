@@ -30,4 +30,15 @@ if exists selecta; then
     fi
     ppgrep $QUERY | xargs kill $*
   }
+
+  function switch-branch() {
+    git branch | cut -c 3- | selecta | xargs git checkout
+  }
+
+  function checkout-branch() {
+    branch=${1:-origin}
+    git branch -r | grep "$branch/" | cut -d'/' -f 2- | selecta | xargs -I{} git checkout -b '{}' $branch/'{}'
+  }
+
+  function p() { cd $(find ~/git ~/repos -type d -maxdepth 1 | selecta) }
 fi
