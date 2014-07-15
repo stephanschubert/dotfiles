@@ -1,5 +1,6 @@
-# Path to your oh-my-zsh configuration.
+# Path to your oh-my-zsh and custom configuration.
 ZSH=$HOME/.oh-my-zsh
+ZSH_CUSTOM=$HOME/.zsh.d
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -52,11 +53,7 @@ export PATH=$HOME/.rbenv/shims:$HOME/.rbenv/bin:/usr/local/bin:/usr/local/sbin:/
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
-# Load every file from ~/.zsh.d
 setopt extendedglob
-for zshrc_snipplet in ~/.zsh.d/*[^~]; do
-  source $zshrc_snipplet
-done
 
 eval "$(rbenv init -)"
 

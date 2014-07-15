@@ -18,15 +18,15 @@ alias gl='git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
 alias bx='bundle exec'
 
 # ls
-alias ls='ls -c --color=auto'
-alias la='ls -ac --color=auto'
-alias ll='ls -lah --color=auto'
+alias ls='ls -cG'
+alias la='ls -acG'
+alias ll='ls -lahG'
 alias lsd='ls -d */'
 
 # ls + grep
-alias lsg='ls --color=auto | g'
-alias lag='ls -a --color=auto | g'
-alias llg='ls -lah --color=auto | g'
+alias lsg='ls -G | g'
+alias lag='ls -aG | g'
+alias llg='ls -lahG | g'
 
 # ruby/rails
 alias rc='ruby script/console'
