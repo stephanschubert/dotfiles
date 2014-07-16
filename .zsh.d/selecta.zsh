@@ -41,4 +41,14 @@ if exists selecta; then
   }
 
   function p() { cd $(find ~/git ~/repos -type d -maxdepth 1 | selecta) }
+
+  function selecta-find {
+    trap '' INT
+    zle -U "$(find . 2>/dev/null | ag -v '^.$|/.svn|/.git' | selecta)"
+    zle redisplay
+    trap - INT
+  }
+
+  zle -N selecta-find
+  bindkey '^t' selecta-find
 fi
