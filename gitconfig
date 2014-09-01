@@ -8,7 +8,7 @@
 	default = simple
 [core]
 	editor = emacs
-	excludesfile = "$HOME/.gitignore"
+	excludesfile = ~/.gitignore
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path =

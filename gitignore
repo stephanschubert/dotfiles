@@ -2,17 +2,11 @@
 .DS_Store
 
 # Emacs' backups
-*~  
-.*~
-*.*~
-.*.*/*~
+*~
+*#
+.#*
 *#*#
 
-# Xmonad temp files
-xmonad.errors
-xmonad.hi
-xmonad.o
-xmonad-x86_64-linux
-
-
-
+# Ruby & Rails
+.bundle/
+.ruby-version
