@@ -1,0 +1,11 @@
+name: "Office"
+windows:
+  - name: "Sage One"
+    root: "~/git/"
+    layout: tiled
+    panes:
+      - commands: ["cd mysageone_de/host_app"]
+      - commands: ["cd einfach_buero/host_app"]
+        focus: true
+      - commands: ["cd mysageone_de; git status"]
+      - commands: ["cd einfach_buero; git status"]
