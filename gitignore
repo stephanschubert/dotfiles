@@ -10,3 +10,4 @@
 # Ruby & Rails
 .bundle/
 .ruby-version
+*.gem
