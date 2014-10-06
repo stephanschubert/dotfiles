@@ -18,3 +18,5 @@
 [user]
 	email = stephan@frozencherry.de
 	name = Stephan Schubert
+[url "git://github.com/"]
+	insteadOf = gh:
