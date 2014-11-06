@@ -11,3 +11,5 @@
 .bundle/
 .ruby-version
 *.gem
+
+ignore_*
