@@ -8,7 +8,8 @@ ZSH_CUSTOM=$HOME/.zsh.d
 # time that oh-my-zsh is loaded.
 ZSH_THEME="agnoster"
 
-EDITOR=`which emacs`
+export ALTERNATE_EDITOR=""
+export EDITOR="emacsclient -nw -c"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
