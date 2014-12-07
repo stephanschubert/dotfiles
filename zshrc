@@ -79,5 +79,6 @@ export RUBY_GC_MALLOC_LIMIT=100000000
 # Add Cask
 export PATH="$HOME/.cask/bin:$PATH"
 
-# Add tab-completion for teamocil
+# Add tab-completion for teamocil & git
 compctl -g '~/.teamocil/*(:t:r)' teamocil
+compdef g=git
