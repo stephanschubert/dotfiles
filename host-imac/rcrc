@@ -1,0 +1,2 @@
+DOTFILES_DIRS="/Users/Stephan/git/dotfiles"
+SYMLINK_DIRS="zsh.d gdb teamocil tmux"
