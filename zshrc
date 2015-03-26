@@ -85,3 +85,7 @@ compdef g=git
 
 # Add `brew install coreutils` utilities to PATH
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+
+# Add support for tracking time spent in the shell (Timing app)
+PROMPT_TITLE='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
+export PROMPT_COMMAND="${PROMPT_COMMAND} ${PROMPT_TITLE}; "
