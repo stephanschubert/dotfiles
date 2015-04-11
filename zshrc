@@ -84,7 +84,7 @@ compctl -g '~/.teamocil/*(:t:r)' teamocil
 compdef g=git
 
 # Add `brew install coreutils` utilities to PATH
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
 
 # Add support for tracking time spent in the shell (Timing app)
 PROMPT_TITLE='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
