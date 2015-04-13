@@ -82,6 +82,7 @@ export PATH="$HOME/.cask/bin:$PATH"
 # Add tab-completion for teamocil & git
 compctl -g '~/.teamocil/*(:t:r)' teamocil
 compdef g=git
+source ~/git/zaw/zaw.zsh
 
 # Add `brew install coreutils` utilities to PATH
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
