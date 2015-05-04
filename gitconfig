@@ -20,3 +20,5 @@
 	name = Stephan Schubert
 [url "git://github.com/"]
 	insteadOf = gh:
+[alias]
+	trash = reset HEAD --hard

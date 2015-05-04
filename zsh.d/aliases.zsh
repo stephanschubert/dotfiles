@@ -12,6 +12,7 @@ alias gc='git commit -m'
 alias gca='git commit -a -m'
 alias gcam='git commit --amend -C HEAD'
 alias gp='git push'
+alias gpr='git pull --rebase'
 alias go='git checkout'
 alias gl='git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
 
