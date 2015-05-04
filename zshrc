@@ -84,8 +84,8 @@ compctl -g '~/.teamocil/*(:t:r)' teamocil
 compdef g=git
 source ~/git/zaw/zaw.zsh
 
-# Add `brew install coreutils` utilities to PATH
-export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
+# Add binaries from `brew install coreutils gnu-sed` to PATH
+export PATH="$(brew --prefix coreutils)/libexec/gnubin:$(brew --prefix gnu-sed)/libexec/gnubin:/usr/local/bin:$PATH"
 
 # Short of learning how to actually configure OSX, here's a hacky way to use
 # GNU manpages for programs that are GNU ones, and fallback to OSX manpages otherwise
