@@ -56,6 +56,9 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 
 setopt extendedglob
 
+# Allow [ or ] whereever you want
+unsetopt nomatch
+
 eval "$(rbenv init -)"
 
 # Ruby performance settings
