@@ -25,10 +25,13 @@ alias la='ls -acG'
 alias ll='ls -lahG'
 alias lsd='ls -d */'
 
-# ls + grep
+# ls + ag
 alias lsg='ls -G | ag'
 alias lag='ls -aG | ag'
 alias llg='ls -lahG | ag'
+
+# Searching Ruby source with ag
+alias agr='ag --ruby --ignore spec --ignore db/migrate'
 
 # ruby/rails
 alias rc='ruby script/console'
