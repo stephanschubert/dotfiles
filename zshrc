@@ -100,3 +100,6 @@ export PROMPT_COMMAND="${PROMPT_COMMAND} ${PROMPT_TITLE}; "
 
 # Autostart ssh-agent
 eval "$(ssh-agent)"
+
+# Enable support for `brew install thefuck`
+alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
