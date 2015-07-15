@@ -1,4 +1,8 @@
 require "rubygems"
+require "pry"
+Pry.start
+exit
+
 require "pp"
 
 # sudo gem install wirble
@@ -41,7 +45,6 @@ colors = Wirble::Colorize.colors.merge({
 Wirble::Colorize.colors = colors
 Wirble.init
 Wirble.colorize
-
 
 # Easily print methods local to an object's class
 

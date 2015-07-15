@@ -10,5 +10,11 @@ if defined?(PryDebugger) or defined?(Byebug)
   end
 end
 
-require 'awesome_print'
-AwesomePrint.pry!
+# require "rubygems"
+# require "awesome_print"
+# AwesomePrint.pry!
+
+Pry.config.editor = proc { |file, line| "emacsclient -nw -c +#{line} #{file}" }
+
+# Pry prints [0G right after start?
+Pry.config.correct_indent = false if ENV["EMACS"]
