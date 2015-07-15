@@ -6,6 +6,7 @@ alias se='sudo emacsclient -nw -c'
 alias g='hub' # `brew install --HEAD hub` redirects any unknown commands to git.
 alias gst='git status'
 alias gdf='git diff'
+alias gdc='git diff --cached'
 alias ga='git add'
 alias gai='git add --interactive'
 alias gc='git commit -m'
