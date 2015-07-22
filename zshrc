@@ -44,7 +44,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew git ruby nvm zsh-syntax-highlighting)
+plugins=(brew docker git ruby nvm zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -103,3 +103,10 @@ eval "$(ssh-agent)"
 
 # Enable support for `brew install thefuck`
 alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
+
+# Docker setup
+eval $(docker-machine env dev)
+
+# Setup Go
+export GOPATH="$HOME/go"
+

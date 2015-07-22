@@ -48,3 +48,9 @@ alias psg='ps aux | ag'
 # Move multiple files
 autoload -U zmv
 alias mmv='noglob zmv -W'
+
+# Docker
+alias dm='docker-machine'
+alias dangling='docker images -q --filter "dangling=true"'
+alias exited='docker ps -a -q --filter "status=exited"'
+alias untagged="docker images -a | grep \"^<none>\" | awk '{print $3}'"
