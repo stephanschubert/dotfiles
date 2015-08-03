@@ -44,7 +44,12 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew docker git ruby nvm zsh-syntax-highlighting)
+plugins=(brew docker git ruby ssh-agent nvm zsh-syntax-highlighting)
+
+# Setup ssh-agent plugin according to
+# https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/ssh-agent/ssh-agent.plugin.zsh
+zstyle :omz:plugins:ssh-agent agent-forwarding on
+zstyle :omz:plugins:ssh-agent identities jazen.private
 
 source $ZSH/oh-my-zsh.sh
 
@@ -97,9 +102,6 @@ alias man='_() { echo $1; man -M $(brew --prefix coreutils)/libexec/gnuman $1 1>
 # Add support for tracking time spent in the shell (Timing app)
 PROMPT_TITLE='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
 export PROMPT_COMMAND="${PROMPT_COMMAND} ${PROMPT_TITLE}; "
-
-# Autostart ssh-agent
-eval "$(ssh-agent)"
 
 # Enable support for `brew install thefuck`
 eval "$(thefuck-alias)"
