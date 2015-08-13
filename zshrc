@@ -104,4 +104,4 @@ PROMPT_TITLE='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
 export PROMPT_COMMAND="${PROMPT_COMMAND} ${PROMPT_TITLE}; "
 
 # Enable support for `brew install thefuck`
-eval "$(thefuck-alias)"
+eval "$(thefuck --alias)"
