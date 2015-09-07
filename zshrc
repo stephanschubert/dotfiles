@@ -61,6 +61,10 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 
 setopt extendedglob
 
+# Emulate bash's behaviour when using !! to run the last command again
+# without the need to press <enter> twice.
+setopt NO_HIST_VERIFY
+
 # Allow [ or ] whereever you want
 unsetopt nomatch
 
