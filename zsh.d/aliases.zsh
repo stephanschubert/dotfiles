@@ -1,3 +1,6 @@
+# General
+alias please='sudo $(fc -ln -1)'
+
 # emacs
 alias e='emacsclient -nw -c'
 alias se='sudo emacsclient -nw -c'
