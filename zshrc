@@ -44,12 +44,10 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew docker git ruby ssh-agent nvm zsh-syntax-highlighting)
+plugins=(brew docker git ruby nvm zsh-syntax-highlighting)
 
-# Setup ssh-agent plugin according to
-# https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/ssh-agent/ssh-agent.plugin.zsh
-zstyle :omz:plugins:ssh-agent agent-forwarding on
-zstyle :omz:plugins:ssh-agent identities jazen.private
+# Use `brew install keychain` as nicer frontend to ssh-agent.
+eval `keychain --eval --agents ssh --inherit any jazen`
 
 source $ZSH/oh-my-zsh.sh
 
