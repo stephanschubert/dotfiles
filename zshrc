@@ -107,3 +107,6 @@ export PROMPT_COMMAND="${PROMPT_COMMAND} ${PROMPT_TITLE}; "
 
 # Enable support for `brew install thefuck`
 eval "$(thefuck --alias)"
+
+# See https://github.com/IFTTT/dash
+source /usr/local/dev-env/ansible/mac_profile
