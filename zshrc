@@ -63,6 +63,9 @@ setopt extendedglob
 # without the need to press <enter> twice.
 setopt NO_HIST_VERIFY
 
+# Don't share history across panes
+setopt nosharehistory
+
 # Allow [ or ] whereever you want
 unsetopt nomatch
 
