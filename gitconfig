@@ -22,6 +22,7 @@
 	insteadOf = gh:
 [alias]
 	trash = reset HEAD --hard
+	unstage = reset HEAD --
 [rerere]
 	enabled = true
 	autoupdate = true
