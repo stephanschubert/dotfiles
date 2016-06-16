@@ -23,6 +23,7 @@
 [alias]
 	trash = reset HEAD --hard
 	unstage = reset HEAD --
+	last = log -1 HEAD
 [rerere]
 	enabled = true
 	autoupdate = true
