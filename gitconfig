@@ -25,6 +25,7 @@
 	unstage = reset HEAD --
 	last = log -1 HEAD
   tree = log --oneline --graph --decorate --all
+  fix = commit --amend
 [rerere]
 	enabled = true
 	autoupdate = true
