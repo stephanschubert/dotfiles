@@ -11,7 +11,7 @@
 	excludesfile = ~/.gitignore
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
@@ -24,6 +24,7 @@
 	trash = reset HEAD --hard
 	unstage = reset HEAD --
 	last = log -1 HEAD
+  tree = log --oneline --graph --decorate --all
 [rerere]
 	enabled = true
 	autoupdate = true
