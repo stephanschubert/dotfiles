@@ -1,0 +1,15 @@
+launch_strategy: in_place
+layout:
+  -
+    split_strategy: horizontal
+    tabs:
+      -
+        layout:
+          -
+            - cd ~/git/rplan && emacsclient -nw -c
+          -
+            - cd ~/git/rplan && echo -ne "\e]1;rplan\a"
+      -
+        layout:
+          -
+            - cd ~
