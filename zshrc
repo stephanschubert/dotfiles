@@ -113,3 +113,5 @@ eval "$(thefuck --alias)"
 
 # See https://github.com/IFTTT/dash
 source /usr/local/dev-env/ansible/mac_profile
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
