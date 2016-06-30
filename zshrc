@@ -8,7 +8,7 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="agnoster"
 
 export ALTERNATE_EDITOR=""
-export EDITOR="emacsclient -nw -c"
+export EDITOR="emacsclient -nw"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
