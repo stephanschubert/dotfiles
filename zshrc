@@ -1,6 +1,5 @@
 # Path to your oh-my-zsh and custom configuration.
 ZSH=$HOME/.oh-my-zsh
-ZSH_CUSTOM=$HOME/.zsh.d
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -115,3 +114,11 @@ eval "$(thefuck --alias)"
 source /usr/local/dev-env/ansible/mac_profile
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+source $ZSH/oh-my-zsh.sh
+
+# Load all files from .zsh.d/ directory
+if [ -d $HOME/.zsh.d ]; then
+  for file in $HOME/.zsh.d/*.zsh; do
+    source $file
+  done
+fi
