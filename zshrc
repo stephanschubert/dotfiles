@@ -40,11 +40,6 @@ COMPLETION_WAITING_DOTS="true"
 # much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew docker git ruby nvm zsh-syntax-highlighting)
-
 # Use `brew install keychain` as nicer frontend to ssh-agent.
 eval `keychain --eval --agents ssh --inherit any jazen`
 
@@ -114,6 +109,15 @@ eval "$(thefuck --alias)"
 source /usr/local/dev-env/ansible/mac_profile
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# https://github.com/dickeyxxx/gh#installation-for-oh-my-zsh
+typeset +gx -A GITHUB
+GITHUB[user]=jazen
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+plugins=(brew docker git ruby nvm gh zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 # Load all files from .zsh.d/ directory
