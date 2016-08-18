@@ -45,9 +45,6 @@ eval `keychain --eval --agents ssh --inherit any jazen`
 
 source $ZSH/oh-my-zsh.sh
 
-# Customize to your needs...
-export PATH=$HOME/.rbenv/shims:$HOME/.rbenv/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
-
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
@@ -83,16 +80,19 @@ export RUBY_GC_MALLOC_LIMIT=100000000
 # This loads NVM
 [ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh
 
-# Add Cask
-export PATH="$HOME/.cask/bin:$PATH"
+# Customize PATH to your needs...
+#export PATH=$HOME/.rbenv/bin:$PATH # TODO Still needed?
+export PATH="$HOME/.cask/bin:$PATH" # Add Cask
+export PATH="/usr/local/sbin:$PATH" # Some brew packages put their files here
+
+# Add binaries from `brew install coreutils gnu-sed` to PATH
+export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+export PATH="$(brew --prefix gnu-sed)/libexec/gnubin:$PATH"
 
 # Add tab-completion for teamocil & git
 compctl -g '~/.teamocil/*(:t:r)' teamocil
 compdef g=git
 source ~/git/zaw/zaw.zsh
-
-# Add binaries from `brew install coreutils gnu-sed` to PATH
-export PATH="$(brew --prefix coreutils)/libexec/gnubin:$(brew --prefix gnu-sed)/libexec/gnubin:/usr/local/bin:$PATH"
 
 # Short of learning how to actually configure OSX, here's a hacky way to use
 # GNU manpages for programs that are GNU ones, and fallback to OSX manpages otherwise
@@ -104,7 +104,6 @@ export PROMPT_COMMAND="${PROMPT_COMMAND} ${PROMPT_TITLE}; "
 
 # Enable support for `brew install thefuck`
 eval "$(thefuck --alias)"
-
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
