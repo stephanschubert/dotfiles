@@ -7,6 +7,9 @@
 .#*
 *#*#
 
+# Project specific files
+.dir-locals.el
+
 # Ruby & Rails
 .bundle/
 .ruby-version
