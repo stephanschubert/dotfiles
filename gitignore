@@ -9,6 +9,7 @@
 
 # Project specific files
 .dir-locals.el
+TAGS
 
 # Ruby & Rails
 .bundle/
