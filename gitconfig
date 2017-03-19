@@ -31,3 +31,7 @@
 	autoupdate = true
 [fetch]
 	prune = true
+[pull]
+	rebase = true
+[rebase]
+	autoStash = true
