@@ -2,8 +2,9 @@
 alias please='sudo $(fc -ln -1)'
 
 # emacs
-alias e='emacsclient -nw -c'
-alias se='sudo emacsclient -nw -c'
+alias e='emacsclient -n -a emacs'
+alias magit='emacsclient -n -e "(magit-status \"$(pwd)\")"'
+alias eshell='emacsclient -n -e "(eshell-client)"'
 
 # git
 alias g='hub' # `brew install --HEAD hub` redirects any unknown commands to git.
