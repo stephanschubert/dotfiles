@@ -24,7 +24,7 @@
 	trash = reset HEAD --hard
 	unstage = reset HEAD --
 	last = log -1 HEAD
-  tree = log --oneline --graph --decorate --all
+  tree = log --oneline --graph --decorate --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
   fix = commit --amend
   patch = !git --no-pager diff --no-color
   stash-all = stash save --include-untracked
