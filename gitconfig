@@ -27,6 +27,7 @@
   tree = log --oneline --graph --decorate --all
   fix = commit --amend
   patch = !git --no-pager diff --no-color
+  stash-all = stash save --include-untracked
   prune = fetch --prune
 [rerere]
 	enabled = true
