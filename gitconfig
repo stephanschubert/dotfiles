@@ -45,6 +45,15 @@
   patch = !git --no-pager diff --no-color
   stash-all = stash save --include-untracked
   prune = fetch --prune
+  # https://hackernoon.com/lesser-known-git-commands-151a1918a60
+  please = push --force-with-lease
+  commend = commit --amend --no-edit
+  it = !git init && git commit -m "root" --allow-empty
+  stsh = stash --keep-index
+  staash = stash --include-untracked
+  staaash = stash --all
+  st = status --short --branch
+  merc = merge --no-ff
 [rerere]
 	enabled = true
 	autoupdate = true
