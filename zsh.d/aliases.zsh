@@ -8,7 +8,7 @@ alias eshell='emacsclient -n -e "(eshell-client)"'
 
 # git
 alias g='hub' # `brew install --HEAD hub` redirects any unknown commands to git.
-alias gst='git status'
+alias gst='git status --short --branch'
 alias gdf='git diff'
 alias gdc='git diff --cached'
 alias ga='git add'
