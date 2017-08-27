@@ -75,3 +75,8 @@
   # Note: this global option applies during receive and transmit
   # https://git-scm.com/docs/git-config#git-config-transferfsckObjects
   # via https://groups.google.com/forum/#!topic/binary-transparency/f-BI4o8HZW0
+[interactive]
+  # By default, you have to press enter after making your selection.
+  # However, it can be configured for single key presses. Add the following
+  # to your git configuration file to enable single key presses for interactive mode:
+  singlekey = true
