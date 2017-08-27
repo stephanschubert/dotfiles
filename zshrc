@@ -123,3 +123,8 @@ if [ -d $HOME/.zsh.d ]; then
     source $file
   done
 fi
+# Run `ls -la` automatically after each `cd`
+function chpwd() {
+    emulate -L zsh
+    ls -la
+}
