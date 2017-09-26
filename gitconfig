@@ -40,6 +40,10 @@
 [url "git://github.com/"]
 	insteadOf = gh:
 [alias]
+  # It happens that you type `git` twice - so please don't balk.
+  # http://caiustheory.com/git-git-git-git-git/
+  git = !exec git
+
 	trash = reset HEAD --hard
 	unstage = reset HEAD --
 	last = log -1 HEAD
