@@ -87,3 +87,5 @@
   # However, it can be configured for single key presses. Add the following
   # to your git configuration file to enable single key presses for interactive mode:
   singlekey = true
+[magit]
+	hideCampaign = true
