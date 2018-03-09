@@ -128,3 +128,12 @@ function chpwd() {
     emulate -L zsh
     ls -la
 }
+# Setup `fzf` --
+# `brew install fzf`
+# To install useful key bindings and fuzzy completion:
+# `$(brew --prefix)/opt/fzf/install`
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Setup `enhancd`
+# `git clone https://github.com/b4b4r07/enhancd ~/git`
+[ -f ~/git/enhancd/init.sh ] && source ~/git/enhancd/init.sh
