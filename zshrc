@@ -92,7 +92,7 @@ export PATH="$(brew --prefix gnu-sed)/libexec/gnubin:$PATH"
 # Add tab-completion for teamocil & git
 compctl -g '~/.teamocil/*(:t:r)' teamocil
 compdef g=git
-source ~/git/zaw/zaw.zsh
+[ -f ~/git/zaw/zaw.zsh ] && source ~/git/zaw/zaw.zsh
 
 # Short of learning how to actually configure OSX, here's a hacky way to use
 # GNU manpages for programs that are GNU ones, and fallback to OSX manpages otherwise
@@ -123,6 +123,7 @@ if [ -d $HOME/.zsh.d ]; then
     source $file
   done
 fi
+
 # Run `ls -la` automatically after each `cd`
 function chpwd() {
     emulate -L zsh
@@ -135,5 +136,9 @@ function chpwd() {
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Setup `enhancd`
-# `git clone https://github.com/b4b4r07/enhancd ~/git`
+# `git clone https://github.com/b4b4r07/enhancd ~/git/enhancd`
 [ -f ~/git/enhancd/init.sh ] && source ~/git/enhancd/init.sh
+
+# Setup syntax highlighting
+# `git clone git@github.com:zsh-users/zsh-syntax-highlighting.git ~/git/zsh-syntax-highlighting`
+[ -f ~/git/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source ~/git/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
