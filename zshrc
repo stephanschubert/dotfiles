@@ -77,9 +77,6 @@ export RUBY_GC_MALLOC_LIMIT=100000000
 # export RUBY_FREE_MIN=500000
 # export RUBY_GC_MALLOC_LIMIT=1000000000
 
-# This loads NVM
-[ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh
-
 # Customize PATH to your needs...
 #export PATH=$HOME/.rbenv/bin:$PATH # TODO Still needed?
 export PATH="$HOME/.cask/bin:$PATH" # Add Cask
@@ -92,11 +89,12 @@ export PATH="$(brew --prefix gnu-sed)/libexec/gnubin:$PATH"
 # Add tab-completion for teamocil & git
 compctl -g '~/.teamocil/*(:t:r)' teamocil
 compdef g=git
+
 [ -f ~/git/zaw/zaw.zsh ] && source ~/git/zaw/zaw.zsh
 
 # Short of learning how to actually configure OSX, here's a hacky way to use
 # GNU manpages for programs that are GNU ones, and fallback to OSX manpages otherwise
-alias man='_() { echo $1; man -M $(brew --prefix coreutils)/libexec/gnuman $1 1>/dev/null 2>&1; if [ "$?" -eq 0 ]; then man -M $(brew --prefix coreutils)/libexec/gnuman $1; else man $1; fi }; _'
+#alias man='_() { echo $1; man -M $(brew --prefix coreutils)/libexec/gnuman $1 1>/dev/null 2>&1; if [ "$?" -eq 0 ]; then man -M $(brew --prefix coreutils)/libexec/gnuman $1; else man $1; fi }; _'
 
 # Add support for tracking time spent in the shell (Timing app)
 PROMPT_TITLE='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
@@ -117,9 +115,36 @@ GITHUB[user]=jazen
 plugins=(brew docker git ruby nvm gh zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
+# Setup nvm
+export NVM_DIR="$HOME/.nvm"
+source $(brew --prefix nvm)/nvm.sh
+
+# Deep shell integration via https://github.com/creationix/nvm#zsh
+autoload -U add-zsh-hook
+load-nvmrc() {
+  local node_version="$(nvm version)"
+  local nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$node_version" ]; then
+      nvm use
+    fi
+  elif [ "$node_version" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
+
 # Load all files from .zsh.d/ directory
 if [ -d $HOME/.zsh.d ]; then
   for file in $HOME/.zsh.d/*.zsh; do
+    # echo $file
     source $file
   done
 fi
@@ -129,6 +154,19 @@ function chpwd() {
     emulate -L zsh
     ls -la
 }
+
+export PATH="$PATH:$HOME/.config/yarn/global/node_modules/.bin"
+# export PATH="$(yarn global bin):$PATH"
+
+source /usr/local/share/zsh/site-functions/_awless
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/sschubert/.config/yarn/global/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/sschubert/.config/yarn/global/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/sschubert/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/sschubert/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh
+
 # Setup `fzf` --
 # `brew install fzf`
 # To install useful key bindings and fuzzy completion:
