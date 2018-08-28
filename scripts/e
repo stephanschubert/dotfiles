@@ -1,11 +1,8 @@
 #!/bin/bash -e
 
-if [[ "$DISPLAY" ]]; then
-    frame=`emacsclient -a '' -e "(member \"$DISPLAY\" (mapcar 'terminal-name (frames-on-display-list)))" 2>/dev/null`
-    [[ "$frame" == "nil" ]] && opts='-c' # if there is no frame open create one
-    [[ "${@/#-nw/}" == "$@" ]] && opts="$opts -n" # don't wait unless we've asked to run in a terminal
-else
-    opts='-nw'
+# https://www.reddit.com/r/emacs/comments/9aex0j/emacs_horrors_determining_if_the_server_is/
+if ! ( emacsclient -c "$@" 2> /dev/null ); then
+    echo "Couldn't start emacsclient"
+    echo "Starting Emacs..."
+    emacs --eval="(server-start)" "$@"
 fi
-
-exec emacsclient -a '' $opts "$@"
