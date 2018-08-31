@@ -61,6 +61,8 @@
   staaash = stash --all
   st = status --short --branch
   merc = merge --no-ff
+[github]
+  user = jazen
 [rerere]
 	enabled = true
 	autoupdate = true
@@ -89,3 +91,9 @@
   singlekey = true
 [magit]
 	hideCampaign = true
+[magithub]
+	online = false
+[magithub "status"]
+	includeStatusHeader = false
+	includePullRequestsSection = false
+	includeIssuesSection = false
