@@ -10,6 +10,7 @@
 # Project specific files
 .dir-locals.el
 .dumbjump
+.tern-port
 TAGS
 
 # Ruby & Rails
