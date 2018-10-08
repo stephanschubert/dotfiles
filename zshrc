@@ -64,25 +64,6 @@ setopt nosharehistory
 # Allow [ or ] whereever you want
 unsetopt nomatch
 
-eval "$(rbenv init -)"
-
-# Ruby performance settings
-
-export RUBY_GC_HEAP_INIT_SLOTS=2000000
-export RUBY_GC_HEAP_FREE_SLOTS=500000
-export RUBY_HEAP_FREE_MIN=20000
-export RUBY_HEAP_SLOTS_INCREMENT=200000
-export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
-export RUBY_GC_MALLOC_LIMIT=100000000
-
-# See https://gist.github.com/burke/1688857
-
-# export RUBY_HEAP_MIN_SLOTS=40000
-# export RUBY_FREE_MIN=500000
-# export RUBY_GC_MALLOC_LIMIT=1000000000
-
-# Customize PATH to your needs...
-#export PATH=$HOME/.rbenv/bin:$PATH # TODO Still needed?
 export PATH="$HOME/.cask/bin:$PATH" # Add Cask
 export PATH="/usr/local/sbin:$PATH" # Some brew packages put their files here
 
