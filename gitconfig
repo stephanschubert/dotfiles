@@ -97,3 +97,7 @@
 	includeStatusHeader = false
 	includePullRequestsSection = false
 	includeIssuesSection = false
+[commit]
+	cleanup = strip
+[magithub "confirm"]
+	refreshWhenAPIUnresponsive = allow
