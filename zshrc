@@ -12,7 +12,7 @@ export LANG="en_US.UTF-8"
 export LC_CTYPE="en_US.UTF-8"
 
 export ALTERNATE_EDITOR=""
-export EDITOR="emacsclient -nw"
+export EDITOR="emacsclient -c -a ''"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
