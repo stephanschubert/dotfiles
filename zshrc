@@ -142,9 +142,6 @@ function chpwd() {
     ls -la
 }
 
-export PATH="$PATH:$HOME/.config/yarn/global/node_modules/.bin"
-# export PATH="$(yarn global bin):$PATH"
-
 source /usr/local/share/zsh/site-functions/_awless
 
 # tabtab source for serverless package
