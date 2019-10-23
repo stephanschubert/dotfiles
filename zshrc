@@ -13,6 +13,11 @@ export LC_CTYPE="en_US.UTF-8"
 
 export ALTERNATE_EDITOR=""
 export EDITOR="emacsclient -c -a ''"
+# export EDITOR="~/dotfiles/emascclient-start.sh"
+
+# Stack and pp are put here
+export PATH=$PATH:~/.local/bin
+export PATH=$(npm-run-path)
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -64,13 +69,6 @@ setopt nosharehistory
 # Allow [ or ] whereever you want
 unsetopt nomatch
 
-export PATH="$HOME/.cask/bin:$PATH" # Add Cask
-export PATH="/usr/local/sbin:$PATH" # Some brew packages put their files here
-
-# Add binaries from `brew install coreutils gnu-sed` to PATH
-export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
-export PATH="$(brew --prefix gnu-sed)/libexec/gnubin:$PATH"
-
 # Add tab-completion for teamocil & git
 compctl -g '~/.teamocil/*(:t:r)' teamocil
 compdef g=git
@@ -99,13 +97,8 @@ alias magit='emacsclient -n -e "(magit-status)"'
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew docker git ruby nvm gh zsh-syntax-highlighting)
+plugins=(brew docker git nvm gh zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
-
-# Setup nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Deep shell integration via https://github.com/creationix/nvm#zsh
 autoload -U add-zsh-hook
@@ -147,16 +140,16 @@ source /usr/local/share/zsh/site-functions/_awless
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /Users/sschubert/.config/yarn/global/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/sschubert/.config/yarn/global/node_modules/tabtab/.completions/serverless.zsh
+# [[ -f /Users/sschubert/.config/yarn/global/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/sschubert/.config/yarn/global/node_modules/tabtab/.completions/serverless.zsh
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /Users/sschubert/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/sschubert/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh
+# [[ -f /Users/sschubert/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/sschubert/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh
 
 # Setup `fzf` --
 # `brew install fzf`
 # To install useful key bindings and fuzzy completion:
 # `$(brew --prefix)/opt/fzf/install`
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Setup `enhancd`
 # `git clone https://github.com/b4b4r07/enhancd ~/git/enhancd`
@@ -165,3 +158,16 @@ source /usr/local/share/zsh/site-functions/_awless
 # Setup syntax highlighting
 # `git clone git@github.com:zsh-users/zsh-syntax-highlighting.git ~/git/zsh-syntax-highlighting`
 [ -f ~/git/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source ~/git/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# https://github.com/cantino/mcfly#installation
+if [ -f $(brew --prefix)/opt/mcfly/mcfly.bash ]; then
+  . $(brew --prefix)/opt/mcfly/mcfly.bash
+fi
+
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /Users/sschubert/git/hydra/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/sschubert/git/hydra/node_modules/tabtab/.completions/slss.zsh
+
+  # Set Spaceship ZSH as a prompt
+  autoload -U promptinit; promptinit
+  prompt spaceship

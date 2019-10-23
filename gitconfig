@@ -43,11 +43,12 @@
   # It happens that you type `git` twice - so please don't balk.
   # http://caiustheory.com/git-git-git-git-git/
   git = !exec git
-
+  fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
 	trash = reset HEAD --hard
 	unstage = reset HEAD --
 	last = log -1 HEAD
   tree = log --oneline --graph --decorate --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+  slap = log --oneline --decorate --graph --all
   fix = commit --amend
   patch = !git --no-pager diff --no-color
   stash-all = stash save --include-untracked

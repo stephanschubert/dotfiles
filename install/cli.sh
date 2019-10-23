@@ -14,6 +14,23 @@ brew install git --with-curl --with-openssl
 
 # Others
 brew install youtube-dl
+brew install emojify
+brew install gnu-tar
+brew install wget
 
 # Override pre-installed duplicates
 brew link --force curl
+
+brew install git-secrets
+# Run in every repo
+# git secrets --install
+# git secrets --register-aws
+
+brew install tree
+
+brew tap cantino/mcfly https://github.com/cantino/mcfly
+brew install mcfly
+
+pip install --upgrade pip
+# Required for `subfont`
+pip install fonttools brotli zopfli

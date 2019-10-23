@@ -28,7 +28,7 @@ alias bx='bundle exec'
 alias ls='ls -cG'
 alias la='ls -acG'
 alias ll='ls -lahG'
-alias lsd='ls -d */'
+alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
 
 # ls + ag
 alias lsg='ls -G | ag'
@@ -58,3 +58,6 @@ alias dm='docker-machine'
 alias dangling='docker images -q --filter "dangling=true"'
 alias exited='docker ps -a -q --filter "status=exited"'
 alias untagged="docker images -a | grep \"^<none>\" | awk '{print $3}'"
+
+# Google Chrome
+alias ogc='sudo /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222'
