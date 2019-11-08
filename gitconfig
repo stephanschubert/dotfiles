@@ -62,6 +62,7 @@
   staaash = stash --all
   st = status --short --branch
   merc = merge --no-ff
+	branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)%09%(color:red)%(authorname)%09%(color:white)%(color:bold)%(refname:short)\" refs/remotes
 [github]
   user = jazen
 [rerere]
