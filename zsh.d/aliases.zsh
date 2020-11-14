@@ -31,19 +31,9 @@ alias ll='ls -lahG'
 alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
 
 # ls + ag
-alias lsg='ls -G | ag'
-alias lag='ls -aG | ag'
-alias llg='ls -lahG | ag'
-
-# Searching Ruby source with ag
-alias agr='ag --ruby --ignore spec --ignore db/migrate'
-
-# ruby/rails
-alias rc='ruby script/console'
-alias rcp='ruby script/console production'
-alias rs='ruby script/server'
-alias td='tail -f log/development.log'
-alias tp='tail -f log/production.log'
+alias lsg='ls -G | rg'
+alias lag='ls -aG | rg'
+alias llg='ls -lahG | rg'
 
 # Master chief
 alias psa='ps auxf'
@@ -61,3 +51,10 @@ alias untagged="docker images -a | grep \"^<none>\" | awk '{print $3}'"
 
 # Google Chrome
 alias ogc='sudo /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222'
+
+alias rm='rm -i' # confirm removal
+alias cp='cp -i' # confirm copy
+alias mv='mv -i' # confirm move
+alias weather='curl v2.wttr.in' # print weather for current location (https://github.com/chubin/wttr.in)
+
+alias zshreload='source ~/.zshrc' # reload ZSH

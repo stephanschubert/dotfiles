@@ -78,12 +78,6 @@ function chpwd() {
 # uninstall by removing these lines or running `tabtab uninstall sls`
 # [[ -f /Users/sschubert/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/sschubert/.config/yarn/#global/node_modules/tabtab/.completions/sls.zsh
 
-# Setup `fzf` --
-# `brew install fzf`
-# To install useful key bindings and fuzzy completion:
-# `$(brew --prefix)/opt/fzf/install`
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 # Setup `enhancd`
 # `git clone https://github.com/b4b4r07/enhancd ~/git/enhancd`
 [ -f ~/git/enhancd/init.sh ] && source ~/git/enhancd/init.sh
@@ -96,10 +90,6 @@ function chpwd() {
 # tabtab source for slss package
 # uninstall by removing these lines or running `tabtab uninstall slss`
 #[[ -f /Users/sschubert/git/hydra/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/sschubert/git/hydra/node_modules/#tabtab/.completions/slss.zsh
-
-  # Set Spaceship ZSH as a prompt
-  #autoload -U promptinit; promptinit
-  #prompt spaceship
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -126,8 +116,50 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
-# Set Spaceship ZSH as a prompt
-autoload -U promptinit; promptinit
-prompt spaceship
+export PATH="$(npm-run-path):/usr/local/sbin:$PATH"
 
-export PATH="/usr/local/sbin:$PATH"
+# <-- Load completion config
+source $HOME/.zsh/completion.zsh
+
+# Initialize the completion system
+autoload -Uz compinit
+
+# Cache completion if nothing changed - faster startup time
+typeset -i updated_at=$(date +'%j' -r ~/.zcompdump 2>/dev/null || stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)
+if [ $(date +'%j') != $updated_at ]; then
+    compinit -i
+else
+    compinit -C -i
+fi
+
+# Enhanced form of menu completion called `menu selection'
+zmodload -i zsh/complist
+# -->
+
+source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOME/.zsh/history.zsh
+source $HOME/.zsh/key-bindings.zsh
+
+bindkey '^ ' autosuggest-accept
+
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
+
+# brew cask install google-cloud-sdk
+source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/terraform terraform
+
+# Setup `fzf` --
+# `brew install fzf`
+# To install useful key bindings and fuzzy completion:
+# `$(brew --prefix)/opt/fzf/install`
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Set Spaceship ZSH as a prompt
+# autoload -U promptinit; promptinit
+# prompt spaceship
+eval "$(starship init zsh)"

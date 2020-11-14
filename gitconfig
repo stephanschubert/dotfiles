@@ -63,6 +63,7 @@
   st = status --short --branch
   merc = merge --no-ff
 	branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)%09%(color:red)%(authorname)%09%(color:white)%(color:bold)%(refname:short)\" refs/remotes
+	undo = reset --soft HEAD^
 [github]
   user = jazen
 [rerere]
@@ -76,9 +77,17 @@
 	autoStash = true
 [core]
   pager = delta --theme='GitHub'
-
 [interactive]
-    diffFilter = delta --color-only
+  # diffFilter = delta --color-only
+  # By default, you have to press enter after making your selection.
+  # However, it can be configured for single key presses. Add the following
+  # to your git configuration file to enable single key presses for interactive mode:
+  singlekey = true
+[delta]
+  syntax-theme = GitHub
+  line-numbers = true
+  side-by-side = false
+  colorMoved = default
 [diff]
   renames = copies
   mnemonicprefix = true
@@ -89,11 +98,6 @@
   # Note: this global option applies during receive and transmit
   # https://git-scm.com/docs/git-config#git-config-transferfsckObjects
   # via https://groups.google.com/forum/#!topic/binary-transparency/f-BI4o8HZW0
-[interactive]
-  # By default, you have to press enter after making your selection.
-  # However, it can be configured for single key presses. Add the following
-  # to your git configuration file to enable single key presses for interactive mode:
-  singlekey = true
 [magit]
 	hideCampaign = true
 [magithub]
