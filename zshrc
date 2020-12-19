@@ -116,8 +116,6 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
-export PATH="$(npm-run-path):/usr/local/sbin:$PATH"
-
 # <-- Load completion config
 source $HOME/.zsh/completion.zsh
 
@@ -163,3 +161,5 @@ complete -o nospace -C /usr/local/bin/terraform terraform
 # autoload -U promptinit; promptinit
 # prompt spaceship
 eval "$(starship init zsh)"
+
+export PATH="$(npm-run-path):/usr/local/sbin:$PATH"
