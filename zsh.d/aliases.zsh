@@ -52,9 +52,12 @@ alias untagged="docker images -a | grep \"^<none>\" | awk '{print $3}'"
 # Google Chrome
 alias ogc='sudo /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222'
 
-alias rm='rm -i' # confirm removal
 alias cp='cp -i' # confirm copy
 alias mv='mv -i' # confirm move
 alias weather='curl v2.wttr.in' # print weather for current location (https://github.com/chubin/wttr.in)
 
 alias zshreload='source ~/.zshrc' # reload ZSH
+
+# Postgres
+alias pg_start="pg_ctl -D /usr/local/var/postgres start"
+alias pg_stop="pg_ctl -D /usr/local/var/postgres stop"
