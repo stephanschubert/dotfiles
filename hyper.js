@@ -16,7 +16,7 @@ module.exports = {
 
     // font family with optional fallbacks
     fontFamily:
-      'Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
+      '"Fira Code", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
 
     // default font weight: 'normal' or 'bold'
     fontWeight: "normal",
@@ -59,8 +59,11 @@ module.exports = {
     css: "",
 
     // custom CSS to embed in the terminal window
-    termCSS: "",
-
+    termCSS: `
+    x-screen x-row {
+        font-variant-ligatures: initial;
+    }
+    `,
     // if you're using a Linux setup which show native menus, set to false
     // default: `true` on Linux, `true` on Windows, ignored on macOS
     showHamburgerMenu: "",
@@ -156,7 +159,7 @@ module.exports = {
   //   `project#1.0.1`
   plugins: [
     "hyper-dracula",
-    // "hyper-font-ligatures",
+    "hyper-font-ligatures",
     // "hyperline",
     "hyper-pane",
     "hyper-active-tab",
