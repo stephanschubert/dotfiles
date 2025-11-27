@@ -1,94 +1,136 @@
+# https://blog.gitbutler.com/how-git-core-devs-configure-git/
+
+# clearly makes git better
+[column]
+   ui = auto
+[branch]
+   sort = -committerdate
+[tag]
+   sort = version:refname
+[init]
+   defaultBranch = main
+[diff]
+   external = difft
+   algorithm = histogram
+   colorMoved = plain
+   mnemonicPrefix = true
+   renames = true
+[push]
+   default = simple
+   autoSetupRemote = true
+   followTags = true
+[fetch]
+   prune = true
+   pruneTags = true
+   all = true
+
+# why the hell not?
+[help]
+   autocorrect = prompt
+[commit]
+   verbose = true
+[rerere]
+   enabled = true
+   autoupdate = true
+[core]
+   excludesfile = ~/.gitignore
+[rebase]
+   autoSquash = true
+   autoStash = true
+   updateRefs = true
+
+# a matter of taste (uncomment if you dare)
+[core]
+   fsmonitor = true
+   untrackedCache = true
+[merge]
+   # (just 'diff3' if git version < 2.3)
+   conflictstyle = zdiff3
+[pull]
+   rebase = true
+
+# My customisations
 [color]
 	ui = auto
 	branch = auto
 	diff = auto
 	interactive = auto
 	status = auto
-[push]
-	default = simple
-  followTags = true
-  # Because I get sick of telling git to do it manually
-  # https://git-scm.com/docs/git-config#git-config-pushfollowTags
+
 [core]
 	editor = emacsclient -nw -c
-	excludesfile = ~/.gitignore
   # git will warn you of trailing whitespace at the end of a line
   # as well as blank lines at the end of a file.
   whitespace = warn
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
+
 [merge]
   ff = only
-  # I pretty much never mean to do a real merge, since I use a rebase workflow.
-  # Note: this global option applies to all merges, including those done during a git pull
-  # https://git-scm.com/docs/git-config#git-config-mergeff
 
-  conflictstyle = diff3
-  # Standard diff is two sets of final changes. This introduces the original text before each side's changes.
-  # https://git-scm.com/docs/git-config#git-config-mergeconflictStyle
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
 [status]
   showUntrackedFiles = all
-  # Sometimes a newly-added folder, since it's only one line in git status, can slip under the radar.
-  # https://git-scm.com/docs/git-config#git-config-statusshowUntrackedFiles
+
 [user]
 	email = stephan@frozencherry.de
 	name = Stephan Schubert
+	username = stephanschubert
+
 [url "git://github.com/"]
 	insteadOf = gh:
+
 [alias]
-  # It happens that you type `git` twice - so please don't balk.
-  # http://caiustheory.com/git-git-git-git-git/
-  git = !exec git
-  fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+	branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)%09%(color:red)%(authorname)%09%(color:white)%(color:bold)%(refname:short)\" refs/remotes
+	last = log -1 HEAD
 	trash = reset HEAD --hard
 	unstage = reset HEAD --
-	last = log -1 HEAD
-  tree = log --oneline --graph --decorate --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
-  slap = log --oneline --decorate --graph --all
-  fix = commit --amend
-  patch = !git --no-pager diff --no-color
-  stash-all = stash save --include-untracked
-  prune = fetch --prune
-  # https://hackernoon.com/lesser-known-git-commands-151a1918a60
-  please = push --force-with-lease
   commend = commit --amend --no-edit
+  fix = commit --amend
+  fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+  git = !exec git
   it = !git init && git commit -m "root" --allow-empty
-  stsh = stash --keep-index
-  staash = stash --include-untracked
-  staaash = stash --all
-  st = status --short --branch
   merc = merge --no-ff
-	branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)%09%(color:red)%(authorname)%09%(color:white)%(color:bold)%(refname:short)\" refs/remotes
+  patch = !git --no-pager diff --no-color
+  please = push --force-with-lease
+  prune = fetch --prune
+  slap = log --oneline --decorate --graph --all
+  st = status --short --branch
+  staaash = stash --all
+  staash = stash --include-untracked
+  stash-all = stash save --include-untracked
+  stsh = stash --keep-index
+  tree = log --oneline --graph --decorate --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 	undo = reset --soft HEAD^
+
+  # `git log` with patches shown with difftastic.
+  dl = -c diff.external=difft log -p --ext-diff
+
+  # Show the most recent commit with difftastic.
+  ds = -c diff.external=difft show --ext-diff
+
+  # `git diff` with difftastic.
+  dft = -c diff.external=difft diff
+
 [github]
   user = jazen
-[rerere]
-	enabled = true
-	autoupdate = true
-[fetch]
-	prune = true
-[pull]
-	rebase = true
-[rebase]
-	autoStash = true
+
 [core]
   pager = delta
+
 [interactive]
   diffFilter = delta --color-only --features=interactive
   # By default, you have to press enter after making your selection.
   # However, it can be configured for single key presses. Add the following
   # to your git configuration file to enable single key presses for interactive mode:
   singlekey = true
+
 [delta]
   features = side-by-side unobstrusive-line-numbers decorations
   syntax-theme = Dracula
   colorMoved = default
+  # navigate = true
+
 [delta "interactive"]
   keep-plus-minus-markers = false
+
 [delta "unobtrusive-line-numbers"]
   line-numbers = true
   line-numbers-minus-style = "#444444"
@@ -98,6 +140,7 @@
   line-numbers-right-format = "{np:>4}│"
   line-numbers-left-style = blue
   line-numbers-right-style = blue
+
 [delta "decorations"]
   file-style = bold yellow ul
   hunk-header-decoration-style = cyan box ul
@@ -109,30 +152,38 @@
   hunk-header-file-style = red
   hunk-header-line-number-style = "#067a00"
   hunk-header-style = file line-number syntax
+
 [delta "line-numbers"]
   line-numbers-left-style = "#444444"
   line-numbers-right-style = "#444444"
   line-numbers-minus-style = red
   line-numbers-plus-style = green
-[diff]
-  renames = copies
-  mnemonicprefix = true
-  algorithm = patience
+
 [transfer]
   fsckobjects = true
   # To combat repository corruption!
   # Note: this global option applies during receive and transmit
   # https://git-scm.com/docs/git-config#git-config-transferfsckObjects
   # via https://groups.google.com/forum/#!topic/binary-transparency/f-BI4o8HZW0
+
 [magit]
 	hideCampaign = true
+
 [magithub]
 	online = false
+
 [magithub "status"]
 	includeStatusHeader = false
 	includePullRequestsSection = false
 	includeIssuesSection = false
-[commit]
-	cleanup = strip
+
 [magithub "confirm"]
 	refreshWhenAPIUnresponsive = allow
+
+[commit]
+	cleanup = strip
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process

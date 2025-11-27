@@ -27,7 +27,7 @@ alias bx='bundle exec'
 # ls
 alias ls='ls -cG'
 alias la='ls -acG'
-alias ll='ls -lahG'
+alias ll='EZA_COLORS="reset:di=37:fi=97:ln=38;5;178:or=38;5;204:oc=38;5;93:ur=90:ux=38;5;220:gu=38;5;231:uu=90:da=38;5;140:hd=38;5;56:xx=38;5;92:in=38;5;220:sn=38;5;108:nb=90:nk=37:nm=97:ng=97:nt=97:sb=90:uk=37:um=97:ug=97:ut=91" eza -la --no-user --group-directories-first --time-style long-iso --long --color-scale-mode gradient --color-scale=age'
 alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
 
 # ls + ag

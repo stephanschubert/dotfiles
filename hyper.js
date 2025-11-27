@@ -47,7 +47,7 @@ module.exports = {
 
     // terminal background color
     // opacity is only supported on macOS
-    backgroundColor: "#000",
+    backgroundColor: "#282A36",
 
     // terminal selection color
     selectionColor: "rgba(248,28,229,0.3)",
@@ -110,7 +110,7 @@ module.exports = {
     //
     // PowerShell on Windows
     // - Example: `C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe`
-    shell: "/usr/local/bin/zsh",
+    shell: "/bin/zsh",
 
     // for setting shell arguments (i.e. for using interactive shellArgs: `['-i']`)
     // by default `['--login']` will be used
@@ -144,8 +144,7 @@ module.exports = {
     // rendering (slower, but supports transparent backgrounds)
 
     // font ligatures won't work otherwise...
-    // webGLRenderer: false,
-    webGLRenderer: true,
+    webGLRenderer: false,
 
     activeTab: "🚀",
     // for advanced config flags please refer to https://hyper.is/#cfg

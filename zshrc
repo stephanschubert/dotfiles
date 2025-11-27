@@ -1,150 +1,205 @@
-# Path to your oh-my-zsh and custom configuration.
-ZSH=$HOME/.oh-my-zsh
+# Amazon Q pre block (keep at top)
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-# ZSH_THEME="agnoster"
-ZSH_THEME="dracula"
+# PATH modifications (consolidated)
+path=(
+  /opt/homebrew/bin
+  /opt/homebrew/opt/python@3.10/libexec/bin
+  /Library/Frameworks/Python.framework/Versions/3.11/bin
+  /opt/homebrew/opt/openjdk@21/bin
+  $HOME/.babashka/bbin/bin
+  $HOME/.local/bin
+  $HOME/.pnpm
+  $HOME/.codeium/windsurf/bin
+  $HOME/.antigravity/antigravity/bin
+  $path
+)
+typeset -U path fpath
+export PATH
 
-# Locale
-export LANG="en_US.UTF-8"
-export LC_CTYPE="en_US.UTF-8"
+# CDPATH for quick directory switching
+cdpath=(~ ~/Dropbox/git)
 
-export ALTERNATE_EDITOR=""
-export EDITOR="emacsclient -c -a ''"
-# export EDITOR="~/dotfiles/emascclient-start.sh"
+# Directory hash shortcuts (~git)
+hash -d git=~/Dropbox/git
 
-# Uncomment following line if you want red dots to be displayed while waiting for completion
+# pnpm
+export PNPM_HOME="$HOME/.pnpm"
+
+# Oh My Zsh variables (must be set BEFORE sourcing oh-my-zsh)
 COMPLETION_WAITING_DOTS="true"
-
-# Uncomment following line if you want to disable marking untracked files under
-# VCS as dirty. This makes repository status check for large repositories much,
-# much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
+# Oh My Zsh setup
+ZSH=$HOME/.oh-my-zsh
+ZSH_THEME="dracula"
+plugins=(git gh zsh-fzf-history-search)
+[[ -f $ZSH/oh-my-zsh.sh ]] && source $ZSH/oh-my-zsh.sh
+
+# Locale settings
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
+
+# Editor settings
+export ALTERNATE_EDITOR=""
+export EDITOR="emacsclient -c -a ''"
+
+# Shell options
+setopt extendedglob
+unsetopt nomatch       # Allow [ or ] anywhere
+setopt NO_FLOW_CONTROL
+setopt INTERACTIVE_COMMENTS
+setopt AUTO_PUSHD PUSHD_IGNORE_DUPS PUSHD_SILENT
+setopt CORRECT         # Suggest corrections for mistyped commands
+
+# Word characters (removed / so path segments are separate words for ^W)
+WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+
+# Auto-show timing for commands taking longer than 5 seconds
+REPORTTIME=5
+
+# History settings
+HISTFILE=~/.zsh_history
+HISTSIZE=100000
+SAVEHIST=100000
+
+setopt APPEND_HISTORY         # Append to history file
+setopt HIST_IGNORE_DUPS       # Ignore consecutive duplicates
+setopt HIST_IGNORE_SPACE      # Ignore commands starting with a space
+setopt EXTENDED_HISTORY       # Save timestamps and duration
+setopt SHARE_HISTORY          # Share history across all sessions
+
+setopt HIST_EXPIRE_DUPS_FIRST # Drop older dupes first when trimming history
+setopt HIST_VERIFY            # Show expanded history line before executing
+setopt INC_APPEND_HISTORY     # Write history immediately for shared sessions
+setopt HIST_IGNORE_ALL_DUPS   # Remove any prior duplicate before adding
+setopt HIST_FIND_NO_DUPS      # ^R and fc skip duplicate matches
+
+# Optional enhancements (uncomment as desired):
+# setopt HIST_REDUCE_BLANKS    # Trim excess whitespace from commands
+# setopt HIST_NO_STORE         # Don't save history commands (e.g., 'history' itself)
+
+# Completion settings (hardcoded brew prefix for faster startup)
+if [[ -d /opt/homebrew/share/zsh-completions ]]; then
+  fpath=("/opt/homebrew/share/zsh-completions" $fpath)
+fi
+fpath=("$HOME/.zsh/completions" $fpath)
+autoload -Uz compinit
+# NOTE: If you get insecure directory warnings, run:
+# chmod go-w /opt/homebrew/share/zsh-completions
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' menu select
+zstyle ':completion:*' squeeze-slashes true
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path "$HOME/.zcompcache"
+zstyle ':completion:*' rehash true
+compinit -C
+
+# Custom zsh files (with existence checks)
+[[ -f $HOME/.zsh/worktree-manager.zsh ]] && source $HOME/.zsh/worktree-manager.zsh
+[[ -f $HOME/.zsh/functions.zsh ]] && source $HOME/.zsh/functions.zsh
+[[ -f $HOME/.zsh/aliases.zsh ]] && source $HOME/.zsh/aliases.zsh
+
+# Visual tweaks
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
-setopt extendedglob
-
-# Emulate bash's behaviour when using !! to run the last command again
-# without the need to press <enter> twice.
-setopt NO_HIST_VERIFY
-
-# Don't share history across panes
-setopt nosharehistory
-
-# Allow [ or ] whereever you want
-unsetopt nomatch
-
-# Enable support for `brew install thefuck`
-#eval "$(thefuck --alias)"
-
-#test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-# https://github.com/dickeyxxx/gh#installation-for-oh-my-zsh
+# GitHub settings
 typeset +gx -A GITHUB
 GITHUB[user]=stephanschubert
 
-#alias magit='emacsclient -n -e "(magit-status)"'
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git gh nvm zsh-syntax-highlighting)
-source $ZSH/oh-my-zsh.sh
-
-# Load all files from .zsh.d/ directory
-if [ -d $HOME/.zsh.d ]; then
- for file in $HOME/.zsh.d/*.zsh; do
-   # echo $file
-   source $file
- done
-fi
-
-# Run `ls -la` automatically after each `cd`
-function chpwd() {
-    emulate -L zsh
-    ls -la
+chpwd() {
+  emulate -L zsh
+  ls -F
 }
 
-#source /usr/local/share/zsh/site-functions/_awless
+# Emacs keybindings
+bindkey -e
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^U' kill-whole-line
+bindkey '^W' backward-kill-word
+bindkey '\ed' kill-word
+bindkey '\ep' up-line-or-history
+bindkey '\en' down-line-or-history
+bindkey '^_' undo
+bindkey '^X^U' undo
+bindkey '^I' expand-or-complete
+bindkey '\e/' expand-word
+bindkey '^X^E' edit-command-line
+bindkey '^ ' autosuggest-accept
+bindkey '^R' history-incremental-pattern-search-backward
+bindkey '^S' history-incremental-pattern-search-forward
+autoload -Uz bracketed-paste-magic
+zle -N bracketed-paste bracketed-paste-magic
 
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-# [[ -f /Users/sschubert/.config/yarn/global/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/sschubert/.config/#yarn/global/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-# [[ -f /Users/sschubert/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/sschubert/.config/yarn/#global/node_modules/tabtab/.completions/sls.zsh
+# Sudo toggle widget (Esc-Esc prepends sudo)
+sudo-command-line() {
+  [[ -z $BUFFER ]] && zle up-history
+  [[ $BUFFER != sudo\ * ]] && BUFFER="sudo $BUFFER"
+  zle end-of-line
+}
+zle -N sudo-command-line
+bindkey '\e\e' sudo-command-line
 
-# Setup `enhancd`
-# `git clone https://github.com/b4b4r07/enhancd ~/git/enhancd`
-[ -f ~/git/enhancd/init.sh ] && source ~/git/enhancd/init.sh
+# External tools and completions
+setopt PROMPT_SUBST
+command -v starship >/dev/null && eval "$(starship init zsh)"
+[[ -f /opt/homebrew/etc/profile.d/autojump.sh ]] && . /opt/homebrew/etc/profile.d/autojump.sh
 
-# https://github.com/cantino/mcfly#installation
-#if [ -f $(brew --prefix)/opt/mcfly/mcfly.bash ]; then
-#  . $(brew --prefix)/opt/mcfly/mcfly.bash
-#fi
-
-# tabtab source for slss package
-# uninstall by removing these lines or running `tabtab uninstall slss`
-#[[ -f /Users/sschubert/git/hydra/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/sschubert/git/hydra/node_modules/#tabtab/.completions/slss.zsh
-
-# <-- Load completion config
-source $HOME/.zsh/completion.zsh
-
-# Initialize the completion system
-autoload -Uz compinit
-
-# Cache completion if nothing changed - faster startup time
-typeset -i updated_at=$(date +'%j' -r ~/.zcompdump 2>/dev/null || stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)
-if [ $(date +'%j') != $updated_at ]; then
-    compinit -i
-else
-    compinit -C -i
+# Set up fzf key bindings and fuzzy completion
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
+export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git'
+export FZF_CTRL_T_OPTS="--preview 'bat --color=always --style=numbers --line-range=:500 {} 2>/dev/null || cat {}'"
+export FZF_ALT_C_OPTS="--preview 'ls -la {}'"
+if [[ -r /opt/homebrew/opt/fzf/shell/completion.zsh ]]; then
+  source /opt/homebrew/opt/fzf/shell/completion.zsh
+fi
+if [[ -r /opt/homebrew/opt/fzf/shell/key-bindings.zsh ]]; then
+  source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
 fi
 
-# Enhanced form of menu completion called `menu selection'
-zmodload -i zsh/complist
-# -->
+# asdf version manager (must come after PATH modifications to take precedence)
+asdf() {
+  unset -f asdf
+  . /opt/homebrew/opt/asdf/libexec/asdf.sh
+  asdf "$@"
+}
 
-source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $HOME/.zsh/history.zsh
-source $HOME/.zsh/key-bindings.zsh
+# Zsh autosuggestions configuration
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 
-bindkey '^ ' autosuggest-accept
+# Zsh enhancements (with existence checks)
+[[ -f /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && \
+  source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[[ -f /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && \
+  source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# tabtab source for packages
-# uninstall by removing these lines
-[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
+setopt NO_BEEP
+setopt NO_LIST_BEEP
 
-# brew cask install google-cloud-sdk
-# source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-# source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+# Node optimization
+export NODE_COMPILE_CACHE=~/.cache/nodejs-compile-cache
 
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/local/bin/terraform terraform
+# Task Master aliases
+alias tm='task-master'
+alias taskmaster='task-master'
+alias reload='source ~/.zshrc'
 
-# Setup `fzf` --
-# `brew install fzf`
-# To install useful key bindings and fuzzy completion:
-# `$(brew --prefix)/opt/fzf/install`
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Secrets (API keys stored separately)
+[[ -f ~/.secrets ]] && source ~/.secrets
 
-# Set Spaceship ZSH as a prompt
-# autoload -U promptinit; promptinit
-# prompt spaceship
-eval "$(starship init zsh)"
+# Claude/Kimi function (uses subshell to avoid polluting environment)
+kimi() {
+  (
+    export ANTHROPIC_BASE_URL=https://api.moonshot.ai/anthropic
+    export ANTHROPIC_AUTH_TOKEN=$KIMI_API_KEY
+    claude "$@"
+  )
+}
 
-# export PATH="$(npm-run-path):/usr/local/sbin:$PATH"
-
-# Set Spaceship ZSH as a prompt
-# autoload -U promptinit; promptinit
-# prompt spaceship
-
-# Commands also provided by macOS have been installed with the prefix "g".
-# If you need to use these commands with their normal names, you
-# can add a "gnubin" directory to your PATH from your bashrc like:
-PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+# Amazon Q post block (keep at bottom)
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
